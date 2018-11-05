@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate, CanLoad } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
+
 import { Observable } from 'rxjs';
-import { CoursesListComponent } from '../courses-list/courses-list.component';
+import { AppComponent } from '../app.component';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class BloqueadorGuard implements CanActivate, CanDeactivate<CoursesListComponent> {
+export class BloqueadorGuard implements CanActivate, CanDeactivate<AppComponent>, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
@@ -15,11 +18,18 @@ export class BloqueadorGuard implements CanActivate, CanDeactivate<CoursesListCo
   }
 
   canDeactivate(
-    component: CoursesListComponent,
+    component: AppComponent,
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    
+
+    return true;
+  }
+
+  canLoad(
+    route: Route
+  ): boolean {
+
     return true;
   }
 }

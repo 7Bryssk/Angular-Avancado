@@ -4,21 +4,23 @@ import { CoursesListComponent } from '../courses-list/courses-list.component';
 import { BloqueadorGuard } from '../guards/bloqueador.guard';
 
 const routes: Routes = [
+
   {
-    path: 'cursos',
-    children: [
-      {
-        path: ':variavel',
-        component: CoursesListComponent,
-        canActivate: [BloqueadorGuard],
-        canDeactivate: [BloqueadorGuard]
-      },
-      {
-        path: '',
-        component: CoursesListComponent
-      }
-    ]
+    path: ':variavel',
+    component: CoursesListComponent,
+    canActivate: [BloqueadorGuard],
+    canDeactivate: [BloqueadorGuard],
+    canLoad: [BloqueadorGuard]
+  },
+  {
+    path: '',
+    component: CoursesListComponent,
+    canActivate: [BloqueadorGuard],
+    canDeactivate: [BloqueadorGuard],
+    canLoad: [BloqueadorGuard]
   }
+
+
 ];
 
 @NgModule({
