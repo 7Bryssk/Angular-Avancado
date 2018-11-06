@@ -1,3 +1,13 @@
 <button class="my-button" [@btnState]="myStateVar" (click)="toggleState()">
   <ng-content></ng-content>
 </button>
+
+<br />
+
+--- Lista dentro do botão
+
+<ul>
+  <li @listState *ngFor="let item of myList; let i = index;" (click)="removeItem(i)">
+    {{ item }}
+  </li>
+</ul>
