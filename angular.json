@@ -121,6 +121,160 @@
           }
         }
       }
+    },
+    "my-library": {
+      "root": "projects/my-library",
+      "sourceRoot": "projects/my-library/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/my-library/tsconfig.lib.json",
+            "project": "projects/my-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/my-library/src/test.ts",
+            "tsConfig": "projects/my-library/tsconfig.spec.json",
+            "karmaConfig": "projects/my-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/my-library/tsconfig.lib.json",
+              "projects/my-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "projeto-dois": {
+      "root": "projects/projeto-dois/",
+      "sourceRoot": "projects/projeto-dois/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/projeto-dois",
+            "index": "projects/projeto-dois/src/index.html",
+            "main": "projects/projeto-dois/src/main.ts",
+            "polyfills": "projects/projeto-dois/src/polyfills.ts",
+            "tsConfig": "projects/projeto-dois/tsconfig.app.json",
+            "assets": [
+              "projects/projeto-dois/src/favicon.ico",
+              "projects/projeto-dois/src/assets"
+            ],
+            "styles": [
+              "projects/projeto-dois/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/projeto-dois/src/environments/environment.ts",
+                  "with": "projects/projeto-dois/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "projeto-dois:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "projeto-dois:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "projeto-dois:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/projeto-dois/src/test.ts",
+            "polyfills": "projects/projeto-dois/src/polyfills.ts",
+            "tsConfig": "projects/projeto-dois/tsconfig.spec.json",
+            "karmaConfig": "projects/projeto-dois/karma.conf.js",
+            "styles": [
+              "projects/projeto-dois/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/projeto-dois/src/favicon.ico",
+              "projects/projeto-dois/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/projeto-dois/tsconfig.app.json",
+              "projects/projeto-dois/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "projeto-dois-e2e": {
+      "root": "projects/projeto-dois-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/projeto-dois-e2e/protractor.conf.js",
+            "devServerTarget": "projeto-dois:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "projeto-dois:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/projeto-dois-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Angular-Avancado"
