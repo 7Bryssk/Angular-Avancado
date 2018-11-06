@@ -68,10 +68,19 @@ import {
         fontSize: 16
       })),
       state('closed', style({
-        height: 0,
-        fontSize: 0
+        height: 0
       })),
-      transition('open <=> closed', animate('800ms cubic-bezier(0.680, -0.550, 0.265, 1.550)'))
+      transition('closed => open', animate('800ms cubic-bezier(0.680, -0.550, 0.265, 1.550)')),
+      transition('open => closed', [
+        group([
+          animate('800ms ease', style({
+            fontSize: 0
+          })),
+          animate('800ms cubic-bezier(0.680, -0.550, 0.265, 1.550)', style({
+            height: 0
+          }))
+        ])
+      ])
     ])
   ]
 })
