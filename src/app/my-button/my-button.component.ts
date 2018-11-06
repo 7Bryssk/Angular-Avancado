@@ -111,4 +111,12 @@ export class MyButtonComponent implements OnInit {
     this.myListState = this.myListState === 'open' ? 'closed' : 'open';
   }
 
+  animationStart(event) {
+    console.log('Start', event);
+  }
+
+  animationEnd(event) {
+    console.log('End', event);
+  }
+
 }
