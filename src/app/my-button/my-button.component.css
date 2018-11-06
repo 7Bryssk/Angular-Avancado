@@ -4,3 +4,8 @@
     padding: 15px;
     background-color: black;
 }
+
+.my-list{
+    border: 1px solid black;
+    overflow: hidden;
+}

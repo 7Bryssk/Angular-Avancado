@@ -3,10 +3,15 @@
 </button>
 
 <br />
+<br />
+
+<button (click)="toggleListState()">
+  Open / Close
+</button>
 
 --- Lista dentro do botão
 
-<ul>
+<ul [@listOpen]="myListState" class="my-list">
   <li @listState *ngFor="let item of myList; let i = index;" (click)="removeItem(i)">
     {{ item }}
   </li>
