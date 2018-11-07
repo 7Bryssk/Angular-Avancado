@@ -10,3 +10,82 @@
 <app-my-button>
   Click-me
 </app-my-button>
+
+------ i18n ------
+
+<br />
+
+{{ 1332.15 | number }}
+
+<br /><br />
+
+<!--
+
+  marcando as tags com 'i18n'
+  ao rodar o comando 'ng xi18n --output-path locale --out-file textos.xlf'
+  no terminal, é gerado um arquivo para poder ser feita a tradução
+
+  para traduzir deve-se criar uma cópia do arquivo com o nome 'nomearqInicial.lingua.xlf'
+    nomearqInicial: no caso de cima - textos
+    lingua - a lingua escolhida no caso do exemplo pt
+
+  e para cada tag <source></source> dentro do arquivo deve ser criada abaixo
+  uma tag <target></target> com a tradução
+
+
+  dentro do angular.json:
+
+  criar nova configuração no serve, e nova configuração no build
+
+  depois de criar a configuração basta indica-la ao subir a aplicação conforme o nome que você utilizou para criar com o comando:
+  ng serve --configuration=pt
+
+-->
+
+<p i18n>Name</p>
+<p i18n>Age</p>
+
+<p>
+  Prural:
+  <br />
+
+  Número 1: {n1, plural,
+  =0 { Ninguém }
+  =1 { {{ n1 }} Pessoa }
+  other { {{ n1 }} Pessoas }
+  }
+  <br />
+  Número 2: {n2, plural,
+  =0 { Ninguém }
+  =1 { {{ n2 }} Pessoa }
+  other { {{ n2 }} Pessoas }
+  }
+  <br />
+  Número 3: {n3, plural,
+  =0 { Ninguém }
+  =1 { {{ n3 }} Pessoa }
+  other { {{ n3 }} Pessoas }
+  }
+</p>
+<br /><br />
+<p>
+  Textos:
+  <br />
+  Genero 1: {g1, select,
+  f { feminino }
+  m { masculino }
+  other { indefinido }
+  }
+  <br />
+  Genero 2: {g2, select,
+  f { feminino }
+  m { masculino }
+  other { indefinido }
+  }
+  <br />
+  Genero 3: {g3, select,
+  f { feminino }
+  m { masculino }
+  other { indefinido }
+  }
+</p>
